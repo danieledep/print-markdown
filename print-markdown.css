@@ -1,0 +1,157 @@
+
+@media print {
+	* {
+		font-family: monospace, system-ui;
+		font-size: 1rem;
+		font-weight: 400;
+		font-style: normal;
+		text-decoration: none;
+		color: black;
+	}
+
+	/* Headings */
+	h1::before {
+		content: "# ";
+	}
+
+	h2::before {
+		content: "## ";
+	}
+
+	h3::before {
+		content: "### ";
+	}
+
+	h4::before {
+		content: "#### ";
+	}
+
+	h5::before {
+		content: "##### ";
+	}
+
+	h6::before {
+		content: "###### ";
+	}
+
+	strong::before {
+		content: "**";
+	}
+
+	strong::after {
+		content: "**";
+	}
+
+	em::before {
+		content: "_";
+	}
+
+	em::after {
+		content: "_";
+	}
+
+	/* Lists */
+	ul {
+		list-style-type: none;
+		padding-left: 1rem;
+	}
+
+	ul > li::marker {
+		content: "- ";
+	}
+
+	ol {
+		list-style-type: decimal;
+		counter-reset: list;
+		padding-left: 1rem;
+	}
+
+	ol > li::marker {
+		content: counter(list) ". ";
+	}
+
+	/* Code blocks */
+	code:not([class*="language-"]) {
+		border: 0;
+	}
+
+	code:not([class*="language-"])::before {
+		content: "`";
+		display: inline-block;
+	}
+
+	code:not([class*="language-"])::after {
+		content: "`";
+		display: inline-block;
+	}
+
+	pre[class*="language-"]::before {
+		content: "```";
+		display: block;
+	}
+
+	pre[class*="language-"]::after {
+		content: "```";
+		display: block;
+	}
+
+	/* Links */
+	a {
+		text-decoration: none;
+
+		&::before {
+			display: inline-block;
+			content: "[";
+			vertical-align: baseline;
+		}
+
+		&::after {
+			display: inline-block;
+			content: "](" attr(href) ")";
+			vertical-align: baseline;
+		}
+	}
+
+	/* Not working because images don't have pseudo elements */
+	/*
+	img::after,
+	picture::after {
+		display: block;
+		content: "![" attr(alt) "](" attr(src) ")";
+	}
+	*/
+
+	/* Blockquotes */
+	blockquote {
+		position: relative;
+		padding-left: 1rem;
+	}
+
+	blockquote::before {
+		position: absolute;
+		top: -0.25rem;
+		left: 0;
+		content: ">";
+	}
+
+	/* Tables */
+	tr,
+	thead {
+		border-top: 8px solid white;
+		border-bottom: 8px solid white;
+	}
+
+	thead::after {
+		content: "------";
+		display: table;
+		clear: both;
+	}
+
+	td,
+	th {
+		border-left: 1px solid black;
+		border-right: 1px solid black;
+		padding: 0 1em;
+	}
+}
+
